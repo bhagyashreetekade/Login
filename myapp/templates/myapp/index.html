@@ -1,0 +1,63 @@
+{% load tailwind_tags %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Area</title>
+    {% tailwind_css %}
+</head>
+<body >
+
+    <!--To display the success error messages -->
+    <!-- {% for message in messages%}
+    <div class="alert alert- alert-dismissible  p-4 mb-4 text-sm text-blue-700 bg-blue-100 rounded-lg dark:bg-blue-200 dark:text-blue-800" role="alert">
+        <strong>Message : </strong>{{message}}
+        
+    </div>
+    {% endfor %}
+    -->
+
+    <!-- To display the success error messages
+    {% for message in messages%}
+    <div class="bg-orange-100 border-l-4 border-orange-500 text-orange-700 p-4" role="alert">
+        <p class="font-bold">Be Warned</p>
+        <p>{{message}}</p>
+    </div>
+    {% endfor %} -->
+
+    <!--To display the success error messages -->
+    {% for message in messages %}
+    <div class="bg-blue-100 border-t-4 border-blue-500 rounded-b text-blue-900 px-4 py-3 shadow-md" role="alert">
+      <div class="flex">
+        <div class="py-1"><svg class="fill-current h-6 w-6 text-blue-500 mr-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z"/></svg></div>
+        <div>
+          <p class="font-bold">{{message.tags}}</p>
+          <p class="text-base">{{message}}</p>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+    
+    <div class="flex justify-center items-center h-screen space-x-24 ">
+      
+       <div class="first">
+        <img src="https://img.freepik.com/free-vector/tired-overworked-secretary-accountant-working-laptop-near-pile-folders-throwing-papers-vector-illustration-stress-work-workaholic-busy-office-employee-concept_74855-13264.jpg?w=700" class="animate-bounce" alt="">
+       </div>
+       <div class="second ">
+        
+        <h1 class="text-5xl font-serif font-semibold pb-14 text-center italic animate-pulse">Sign In</h1>
+        <form action="signin" method="post" class="flex flex-col space-y-5" >
+            {% csrf_token %}
+            <input type="text" id="username" name="username" placeholder="Username" class="text-lg rounded-lg w-72" Required>
+            <input type="password" id="pass1" name="pass1" placeholder="Password" class="text-lg rounded-lg w-72" Required>
+            <button type="submit"  class="inline-block px-3 py-3 mx-24 bg-blue-600 items-center text-center text-white font-semibold text-sm leading-snug uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">LOGIN</button>
+        </form>
+        <h1 class="font-bold py-4">Don't have an account? <a href="/signup" class="cursor-pointer text-red-700 font-bold">Sign Up</a></h1>
+        
+       </div>
+    </div>
+</body>
+</html>                            

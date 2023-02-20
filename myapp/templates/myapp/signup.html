@@ -1,0 +1,60 @@
+{% load tailwind_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignUp</title>
+    {% tailwind_css %}
+</head>
+<body>
+    
+    <!--To display the success error messages -->
+    {% for message in messages %}
+    <div class="bg-blue-100 border-t-4 border-blue-500 rounded-b text-blue-900 px-4 py-3 shadow-md" role="alert">
+      <div class="flex">
+        <div class="py-1"><svg class="fill-current h-6 w-6 text-blue-500 mr-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z"/></svg></div>
+        <div>
+          <p class="font-bold">{{message.tags}}</p>
+          <p class="text-base">{{message}}</p>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+    
+    
+    
+
+    <div class="flex justify-center items-center h-screen space-x-36">
+        <div class="first">
+            <img src="https://cdni.iconscout.com/illustration/premium/thumb/signup-screen-of-e-wallet-app-3323727-2791556.png" class="w-[2000] animate-pulse" alt="">
+        </div>
+        <div class="second">
+            <h1 class="text-5xl font-serif font-semibold pb-8 text-center italic animate-pulse">Sign Up</h1>
+            <form action="/signup" method="post" class="flex flex-col ">
+
+                {% csrf_token %}
+                <label for="" class="text-lg font-medium font-serif py-4">User Name</label>
+                <input type="text" id="username" class="text-lg rounded-lg w-64" name="username" placeholder="Create a username(only letters and numbers)" Required>
+                
+                <label for="" class="text-lg font-medium font-serif py-4">Email Address</label>
+                <input type="email" id="email" class="text-lg rounded-lg w-64" name="email" placeholder="Enter email address" Required>
+                
+                <label for="" class="text-lg font-medium font-serif py-4">Password</label>
+                <input type="password" id="pass1" class="text-lg rounded-lg w-64" name="pass1" placeholder="Enter password" Required>
+              
+                <label for="" class="text-lg font-medium font-serif py-4">Confirm Password</label>
+                <input type="password" id="pass2" class="text-lg rounded-lg w-64" name="pass2" placeholder="Confirm your password" Required>
+                
+                <button type="submit"  class="inline-block px-7 py-3 my-5 mx-16 bg-blue-600 items-center text-center text-white font-bold text-lg leading-snug uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">sign Up</button>
+        
+            </form>
+        </div>
+    </div>
+
+
+    <script src=""></script>
+</body>
+</html>
